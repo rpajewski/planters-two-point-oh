@@ -1,0 +1,25 @@
+{
+  "name": "planters-two-point-oh-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "watch": "nodemon",
+    "seed": "node config/seeds.js"
+  },
+  "author": "rpajewski",
+  "license": "MIT",
+  "dependencies": {
+    "apollo-server-express": "^3.0.0",
+    "bcrypt": "^5.0.1",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "graphql": "^15.5.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.13.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.12"
+  }
+}
