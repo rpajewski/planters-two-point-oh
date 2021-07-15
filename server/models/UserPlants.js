@@ -4,7 +4,7 @@ const userPlantSchema = new Schema({
     plant_id: {
         type: Schema.Types.ObjectId,
         ref: 'Plant',
-        required: false
+        required: true
     },
     room_id: {
         type: Schema.Types.ObjectId,

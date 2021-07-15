@@ -39,7 +39,7 @@ const plantSchema = new Schema({
         required: true
     },
     // (1) water often, (2) moderate water, (3) infrequent watering
-    water: {
+    waterReq: {
         type: Number,
         required: true
     }
