@@ -1,6 +1,6 @@
 const User = require('./User')
+const Home = require('./Home')
 const Plant = require('./Plant')
 const Room = require('./Room')
-const UserPlants = require('./UserPlants')
 
-module.exports = { User, Plant, Room, UserPlants }
+module.exports = { User, Home, Plant, Room }

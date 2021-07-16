@@ -42,6 +42,10 @@ const plantSchema = new Schema({
     waterReq: {
         type: Number,
         required: true
+    },
+    room: {
+        type: Schema.Types.ObjectId,
+        ref: 'Room'
     }
 })
 

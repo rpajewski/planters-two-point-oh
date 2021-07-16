@@ -1,9 +1,6 @@
 const { Schema, model } = require('mongoose')
 const bcrypt = require('bcrypt')
 
-const Room = require('./Room')
-const UserPlants = require('./UserPlants')
-
 const userSchema = new Schema({
     username: {
         type: String,
@@ -27,12 +24,9 @@ const userSchema = new Schema({
         minlength: 8
     },
     home: {
-        type: String,
-        required: false,
-        default: 'My Home'
-    },
-    rooms: [ Room.schema ],
-    plants: [ UserPlants.schema ]
+        type: Schema.Types.ObjectId,
+        ref: 'Home'
+    }
 })
 
 userSchema.pre('save', async function(next) {

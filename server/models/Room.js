@@ -3,13 +3,17 @@ const { Schema, model } = require('mongoose')
 const roomSchema = new Schema({
     roomName: {
         type: String,
-        require: true,
+        required: true,
         trim: true
     },
     // (1) direct sunlight, (2) partly sunny, (3) low sunlight
     lightLevel: {
         type: Number,
-        require: true
+        required: true
+    },
+    plants: {
+        type: Schema.Types.ObjectId,
+        ref: 'Plant'
     }
 })
 
