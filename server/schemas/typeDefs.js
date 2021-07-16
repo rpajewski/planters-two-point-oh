@@ -61,7 +61,20 @@ const typeDefs = gql`
     }
 
     type Room {
-
+        _id: ID
+        roomName: String
+        lightLevel: Number
+        plants: {
+            _id: ID
+            commonName: String
+            scientificName: String
+            image_url: String
+            descirption: String
+            careLevel: Number
+            toxicity: Boolean
+            lightLevel: Number
+            waterReq: Number
+        }
     }
 
     type Auth {
@@ -75,11 +88,21 @@ const typeDefs = gql`
     }
 
     input RoomInput {
-
+        _id: ID
+        roomName: String
+        lightLevel: Number
     }
 
     input PlantInput {
-        
+        _id: ID
+        commonName: String
+        scientificName: String
+        image_url: String
+        descirption: String
+        careLevel: Number
+        toxicity: Boolean
+        lightLevel: Number
+        waterReq: Number
     }
 
     type Query {
@@ -94,6 +117,7 @@ const typeDefs = gql`
         login(email: String!, password: String!): Auth
         updateUser(username: String, email: String, password: String, home: HomeInput): User
         updateHome(name: String, rooms: RoomInput): Home
+        updateRoom(roomName: String, lightLevel: Number, plants: PlantInput): Room
     }
 `
 
