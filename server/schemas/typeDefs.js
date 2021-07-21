@@ -1,80 +1,36 @@
 const { gql } = require('apollo-server-express')
 
 const typeDefs = gql`
-    type User {
-        _id: ID
-        username: String
-        email: String
-        home: {
-            _id: ID
-            name: String
-            rooms: {
-                _id: ID
-                roomName: String
-                lightLevel: Number
-                plants: {
-                    _id: ID
-                    commonName: String
-                    scientificName: String
-                    image_url: String
-                    description: String
-                    careLevel: Number
-                    toxicity: Boolean
-                    lightLevel: Number
-                    waterReq: Number
-                }
-            }
-        }
-    }
-
     type Plant {
         _id: ID
         commonName: String
         scientificName: String
         image_url: String
         descirption: String
-        careLevel: Number
+        careLevel: Int
         toxicity: Boolean
-        lightLevel: Number
-        waterReq: Number
-    }
-
-    type Home {
-        _id: ID
-        name: String
-        rooms: {
-            _id: ID
-            roomName: String
-            lightLevel: Number
-            plants: {
-                _id: ID
-                commonName: String
-                scientificName: String
-                image_url: String
-                description: String
-                careLevel: Number
-                toxicity: Boolean
-                lightLevel: Number
-                waterReq: Number
-            }
-        }
+        lightLevel: Int
+        waterReq: Int
     }
 
     type Room {
         _id: ID
         roomName: String
-        lightLevel: Number
-        plants: {
-            _id: ID
-            commonName: String
-            scientificName: String
-            image_url: String
-            descirption: String
-            careLevel: Number
-            toxicity: Boolean
-            lightLevel: Number
-            waterReq: Number
-        }
+        lightLevel: Int
+        plants: [Plant]
+    }
+
+    type Home {
+        _id: ID
+        homeName: String
+        rooms: [Room]
+    }
+
+    type User {
+        _id: ID
+        username: String
+        email: String
+        home: [Home]
     }
 
     type Auth {
@@ -90,7 +46,7 @@ const typeDefs = gql`
     input RoomInput {
         _id: ID
         roomName: String
-        lightLevel: Number
+        lightLevel: Int
     }
 
     input PlantInput {
@@ -108,9 +64,9 @@ const typeDefs = gql`
         addUser(username: String!, email: String!, password: String!): Auth
         login(email: String!, password: String!): Auth
         updateUser(username: String, email: String, password: String, home: HomeInput): User
-        updateHome(name: String, rooms: RoomInput): Home
-        updateRoom(roomName: String, lightLevel: Number, plants: PlantInput): Room
-        addPlant(commonName: String!, scientificName: String!, image_url: String!, description: String!, careLevel: Number!, toxicity: Boolean, lightLevel: Number!, waterReq: Number!): Plant
+        updateHome(homeName: String, rooms: RoomInput): Home
+        updateRoom(roomName: String, lightLevel: Int, plants: PlantInput): Room
+        addPlant(commonName: String!, scientificName: String!, image_url: String!, description: String!, careLevel: Int!, toxicity: Boolean, lightLevel: Int!, waterReq: Int!): Plant
     }
 `
 

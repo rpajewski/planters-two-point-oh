@@ -1,7 +1,7 @@
 const { Schema, model } = require('mongoose')
 
 const homeSchema = new Schema({
-    name: {
+    homeName: {
         type: String,
         required: false,
         default: 'My Home'
