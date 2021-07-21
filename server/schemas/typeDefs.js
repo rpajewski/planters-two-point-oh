@@ -95,14 +95,6 @@ const typeDefs = gql`
 
     input PlantInput {
         _id: ID
-        commonName: String
-        scientificName: String
-        image_url: String
-        descirption: String
-        careLevel: Number
-        toxicity: Boolean
-        lightLevel: Number
-        waterReq: Number
     }
 
     type Query {
@@ -118,6 +110,7 @@ const typeDefs = gql`
         updateUser(username: String, email: String, password: String, home: HomeInput): User
         updateHome(name: String, rooms: RoomInput): Home
         updateRoom(roomName: String, lightLevel: Number, plants: PlantInput): Room
+        addPlant(commonName: String!, scientificName: String!, image_url: String!, description: String!, careLevel: Number!, toxicity: Boolean, lightLevel: Number!, waterReq: Number!): Plant
     }
 `
 
